@@ -44,7 +44,7 @@ elif [ "$(uname -m | grep -c 'x86_64')" -gt 0 ]; then
 fi
 
 # installed version
-installedVersion=$(sudo -u bitcoin bitcoind --version | head -n1 | cut -d" " -f4 | cut -c 2-)
+installedVersion=$(sudo -u bitcoin bitcoind --version | head -n1 | cut -d" " -f5 | cut -c 2-)
 
 # test if the installed version already the tested/recommended update version
 bitcoinUpdateInstalled=$(echo "${installedVersion}" | grep -c "${bitcoinVersion}")
