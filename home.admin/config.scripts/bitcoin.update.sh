@@ -137,12 +137,12 @@ if [ "${mode}" = "tested" ]; then
   if [ "${result}" -eq 2 ]; then
     # this can happen if bitcoin install script already has a higher version then the tested version set by this script (see above)
     echo "# installed version is newer then to be updated version --> ABORT"
-    echo 
+    echo
     exit 1
   fi
   if [ "${result}" -eq 0 ]; then
     echo "# version is already installed --> ABORT"
-    echo 
+    echo
     exit 1
   fi
 
@@ -288,6 +288,7 @@ if [ "${mode}" = "tested" ] || [ "${mode}" = "reckless" ] || [ "${mode}" = "cust
   echo "# Installing Bitcoin Core v${bitcoinVersion}"
   tar -xvf ${binaryName}
   sudo install -m 0755 -o root -g root -t /usr/local/bin/ bitcoin-${bitcoinVersion}/bin/*
+  sudo install -m 0644 -o root -g root -D -t /usr/local/share/man/man1 bitcoin-${bitcoinVersion}/share/man/man1/*
   sleep 3
   if ! sudo -u bitcoin /usr/local/bin/bitcoind --version | grep "${bitcoinVersion}"; then
     echo
